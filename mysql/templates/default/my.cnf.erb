@@ -1,6 +1,6 @@
 [client]
 port = <%= @listen_port %>
-default-character-set = <%= @character_set %>
+default-character-set = <%= @charcter_set %>
 socket = <%= @socket %>
 
 [mysql]
@@ -8,13 +8,13 @@ no_auto_rehash
 #safe-updates
 prompt = '\u@<HOSTNAME> mysql>'
 # also can use utf8mb4
-default-character-set = <%= @character_set %>
+default-character-set = <%= @charcter_set %>
 
 [mysqld]
 datadir = <%= @data_dir %>
 port = 3306
 socket = <%= @socket %>
-character_set_server = <%= @character_set %>
+character_set_server = <%= @charcter_set %>
 
 skip_external_locking
 skip_name_resolve
@@ -79,7 +79,7 @@ quick
 max_allowed_packet = 16M
 
 [mysql]
-default-character-set=utf8
+default-character-set = <%= @character_set %>
 no-auto-rehash
 # Remove the next comment character if you are not familiar with SQL
 #safe-updates

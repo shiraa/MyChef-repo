@@ -11,7 +11,7 @@ directory "/usr/local/var" do
   user 'root'
   group 'root'
   recursive true
-  mode 0755
+  mode 00777
   action :create
   not_if { ::File.exists?("/usr/local/var/*")}
 end
@@ -54,7 +54,7 @@ template '/etc/my.cnf' do
 
   variables({
     :listen_port => node['mysql']['listen_port'],
-    :character_set => node['mysql']['character_set'],
+    :charcter_set => node['mysql']['charcter_set'],
     :data_dir => node['mysql']['data_dir'],
     :socket => node['mysql']['socket'],
     :strage_engine => node['mysql']['strage_engine'],
@@ -65,8 +65,8 @@ template '/etc/my.cnf' do
 end
 
 execute "move" do
-  command "mv -f -b default_mysql /var/lib/mysql /usr/local/var/"
-  only_if { ::File.exists?("/var/lib/mysql/*")}
+  command "mv /var/lib/mysql /usr/local/var/"
+  only_if { ::File.exists?("/var/lib/mysql")}
 end
 
 service 'mysql' do
